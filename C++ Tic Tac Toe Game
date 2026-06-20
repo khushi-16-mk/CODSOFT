@@ -1,0 +1,43 @@
+#include <iostream>
+using namespace std;
+
+int main()
+{
+    char a[9] = {'1','2','3','4','5','6','7','8','9'};
+    int p;
+    char ch = 'X';
+
+    for(int i = 0; i < 9; i++)
+    {
+        cout << "\n";
+        cout << a[0] << " " << a[1] << " " << a[2] << endl;
+        cout << a[3] << " " << a[4] << " " << a[5] << endl;
+        cout << a[6] << " " << a[7] << " " << a[8] << endl;
+
+        cout << "\nPlayer " << ch << " Enter Position (1-9): ";
+        cin >> p;
+
+        a[p-1] = ch;
+
+        if((a[0]==a[1]&&a[1]==a[2]) ||
+           (a[3]==a[4]&&a[4]==a[5]) ||
+           (a[6]==a[7]&&a[7]==a[8]) ||
+           (a[0]==a[3]&&a[3]==a[6]) ||
+           (a[1]==a[4]&&a[4]==a[7]) ||
+           (a[2]==a[5]&&a[5]==a[8]) ||
+           (a[0]==a[4]&&a[4]==a[8]) ||
+           (a[2]==a[4]&&a[4]==a[6]))
+        {
+            cout << "\nPlayer " << ch << " Wins!";
+            return 0;
+        }
+
+        if(ch == 'X')
+            ch = 'O';
+        else
+            ch = 'X';
+    }
+
+    cout << "\nGame Draw!";
+    return 0;
+}

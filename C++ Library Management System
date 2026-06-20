@@ -1,0 +1,79 @@
+#include <iostream>
+using namespace std;
+
+int main()
+{
+    string books[3] = {"AI&ML", "Mathematics", "AI"};
+    int choice, num, days;
+    bool issued[3] = {false, false, false};
+
+    do
+    {
+        cout << "\n===== LIBRARY SYSTEM =====";
+        cout << "\n1. Show Books";
+        cout << "\n2. Issue Book";
+        cout << "\n3. Return Book";
+        cout << "\n4. Calculate Fine";
+        cout << "\n5. Exit";
+        cout << "\nEnter Choice: ";
+        cin >> choice;
+
+        switch(choice)
+        {
+            case 1:
+                cout << "\nAvailable Books:\n";
+                for(int i = 0; i < 3; i++)
+                {
+                    cout << i+1 << ". " << books[i];
+
+                    if(issued[i])
+                        cout << " (Issued)";
+                    else
+                        cout << " (Available)";
+
+                    cout << endl;
+                }
+                break;
+
+            case 2:
+                cout << "Enter Book Number: ";
+                cin >> num;
+
+                if(!issued[num-1])
+                {
+                    issued[num-1] = true;
+                    cout << "Book Issued Successfully";
+                }
+                else
+                {
+                    cout << "Book Already Issued";
+                }
+                break;
+
+            case 3:
+                cout << "Enter Book Number: ";
+                cin >> num;
+
+                issued[num-1] = false;
+                cout << "Book Returned Successfully";
+                break;
+
+            case 4:
+                cout << "Enter Late Days: ";
+                cin >> days;
+
+                cout << "Fine = Rs. " << days * 2;
+                break;
+
+            case 5:
+                cout << "Thank You!";
+                break;
+
+            default:
+                cout << "Invalid Choice";
+        }
+
+    } while(choice != 5);
+
+    return 0;
+}
